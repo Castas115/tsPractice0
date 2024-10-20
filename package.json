@@ -10,7 +10,7 @@
    },
    "dependencies": {
       "dotenv": "^16.4.5",
-      "mysql": "^2.14.1",
+      "mysql2": "^3.11.3",
       "reflect-metadata": "^0.1.13",
       "typeorm": "0.3.20"
    },
