@@ -17,7 +17,7 @@ const Router = express.Router();
 //   AuthController.getProfile
 // );
 Router.post("/signup", UserController.signup as any);
-// Router.post("/login", AuthController.login);
+Router.post("/login", AuthController.login as any);
 // Router.put(
 //   "/update/:id",
 //   authentification,
