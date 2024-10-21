@@ -2,7 +2,7 @@ import { AppDataSource } from "./data-source"
 import * as express from "express";
 import { Request, Response } from "express";
 import * as dotenv from "dotenv";
-import { userRouter } from "./routes/user";
+import { userRouter } from "./routes/user.router";
 
 const app = express();
 
