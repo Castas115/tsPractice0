@@ -41,8 +41,6 @@ export class UserController {
   static async getUsers(req: Request, res: Response) {
     const userRepository = AppDataSource.getRepository(User);
     const allUsers = await userRepository.find();
-      // where: { id: req["currentUser"].id },
-    // });
     return res.status(200).json({ allUsers });
   }
 }
