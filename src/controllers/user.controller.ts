@@ -48,4 +48,27 @@ export class UserController {
     const user = await userRepository.delete( id );
     return res.status(200).json({ user });
   }
+
+  static async updateUser(req: Request, res: Response) {
+    const id = req.params.id
+    const isAdmin = req["currentUser"].role == 'admin';
+    const canModifyUser = id == req["currentUser"].id || isAdmin;
+    if (!canModifyUser) {
+      return res.status(403).json({ message: "Forbidden" });
+    }
+
+    const { name, email, role } = req.body;
+
+    const modifiedUser = new UserResponse()
+    modifiedUser.name = name;
+    modifiedUser.email= email;
+      
+    if(isAdmin){
+      modifiedUser.role = role;
+    }
+    
+    const userRepository = AppDataSource.getRepository(User);
+    const result = await userRepository.update(id, modifiedUser);
+    return res.status(200).json(result);
+  }
 }
