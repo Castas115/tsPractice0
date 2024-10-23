@@ -15,9 +15,12 @@ export class AuthController {
 
       const userRepository = AppDataSource.getRepository(User);
       const user = await userRepository.findOne({ where: { email } });
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
 
       const isPasswordValid = encrypt.comparepassword(user.password, password);
-      if (!user || !isPasswordValid) {
+      if (!isPasswordValid) {
         return res.status(404).json({ message: "User not found" });
       }
       const token = encrypt.generateToken({
