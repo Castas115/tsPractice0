@@ -4,12 +4,12 @@ import { UserController } from "../controllers/user.controller";
 import { AuthController } from "../controllers/auth.controller";
 const Router = express.Router();
 
-// Router.get(
-//   "/users",
-//   authentification,
-//   authorization(["admin"]),
-//   UserController.getUsers
-// );
+Router.get(
+  "/users",
+  authentification,
+  authorization(["admin"]),
+  UserController.getUsers as any
+);
 Router.get(
   "/profile",
   authentification,
