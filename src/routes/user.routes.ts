@@ -10,12 +10,12 @@ const Router = express.Router();
 //   authorization(["admin"]),
 //   UserController.getUsers
 // );
-// Router.get(
-//   "/profile",
-//   authentification,
-//   authorization(["user", "admin"]),
-//   AuthController.getProfile
-// );
+Router.get(
+  "/profile",
+  authentification,
+  authorization(["user", "admin"]),
+  AuthController.getProfile as any
+);
 Router.post("/signup", UserController.signup as any);
 Router.post("/login", AuthController.login as any);
 // Router.put(
