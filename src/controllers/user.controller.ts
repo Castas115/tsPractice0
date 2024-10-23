@@ -24,8 +24,6 @@ export class UserController {
     userDataSent.email= user.email;
     userDataSent.role = user.role;
 
-
-    
     const token = encrypt.generateToken({
         id: user.id,
         name: user.name,
@@ -42,5 +40,12 @@ export class UserController {
     const userRepository = AppDataSource.getRepository(User);
     const allUsers = await userRepository.find();
     return res.status(200).json({ allUsers });
+  }
+
+  static async deleteUser(req: Request, res: Response) {
+    let id = req.params.id
+    const userRepository = AppDataSource.getRepository(User);
+    const user = await userRepository.delete( id );
+    return res.status(200).json({ user });
   }
 }

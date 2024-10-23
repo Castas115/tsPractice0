@@ -24,10 +24,11 @@ Router.post("/login", AuthController.login as any);
 //   authorization(["user", "admin"]),
 //   UserController.updateUser
 // );
-// Router.delete(
-//   "/delete/:id",
-//   authentification,
-//   authorization(["admin"]),
-//   UserController.deleteUser
-// );
+
+Router.delete(
+  "/delete/:id",
+  authentification,
+  authorization(["admin"]),
+  UserController.deleteUser as any
+);
 export { Router as userRouter };
